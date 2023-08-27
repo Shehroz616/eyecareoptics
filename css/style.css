@@ -1,0 +1,143 @@
+.custom-wizar-form{
+    overflow-x: hidden;
+    height: 100vh;
+}
+.custom-wizar-form .col-lg-4{
+    box-shadow: rgb(239, 243, 245) 0px 4px 48px 0px;
+}
+.all-steps{
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+.form-title{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+.custom-label{
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(239, 243, 245, 1);
+    border-radius: 25rem;
+    cursor: pointer;
+    transition: all .3s;
+    font-weight: 600;
+}
+.custom-label:hover{
+    background-color: #dfe9f0;
+}
+.text-label{
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 10px;
+    display: block;
+}
+.close-btn{
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+#backBtn{
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: none;
+}
+.step-form {
+    display: none;
+}
+.step-form.active {
+    display: block;
+}
+.readers-lenghts{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 15px;
+}
+.custom-label-2{
+    width: 49%;
+    padding: 13px 24px;
+    background: rgba(239, 243, 245, 1);
+    border-radius: 25rem;
+    cursor: pointer;
+    transition: all .3s;
+    text-align: center;
+}
+.custom-label-2:hover{
+    background-color: #dfe9f0;
+}
+.grid-section{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 12px;
+    row-gap: calc(4px * 9);
+    margin: auto;
+}
+.cart-row{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.form-footer{
+    padding-top: 30px;
+}
+.subtotal-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: none;
+    opacity: 0;
+    transition: opacity .5s;
+}
+.subtotal-container span{
+    font-weight: 600;
+}
+.addtocart-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+    opacity: 0;
+    transition: opacity .5s;
+}
+.addtocart-btn{
+    background: #006ea5;
+    width: 100%;
+    border-radius: 25rem;
+    padding: 13px 24px;
+    border: none;
+    color: white;
+    font-weight: 600;
+}
+.edit-btn{
+    color: #006ea5;
+    background: transparent;
+    border: none;
+    margin-top: 16px;
+}
+#progress-container {
+    width: 100%;
+    background-color: #f0f0f0;
+  }
+  
+#progress-bar {
+    height: 2px;
+    background-color: #4caf50;
+    width: 0%;
+}
+@media(min-width: 768px){
+    .grid-section{
+        max-width: 352px;
+    }
+}
+
+@media(max-width:991px){
+    .all-steps{
+        height: calc(100vh - 250px);
+    }
+}

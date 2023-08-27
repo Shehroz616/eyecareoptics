@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="custom-wizar-form">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                <div class="col-lg-8 d-flex align-items-center justify-content-center">
+                    <div class="px-5 w-100">
+                        <img src="img/glasses.webp" class="w-100" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-4 px-lg-5 px-3">
+                    <div id="progress-container">
+                        <div id="progress-bar"></div>
+                      </div>
+                    <div class="d-flex justify-content-between pt-4">
+                        <div id="navigation">
+                            <button type="button" id="backBtn"><img src="img/arrow-left.svg" alt=""></button>
+                        </div>
+                        <button type="button" class="close-btn"><img src="img/x-lg.svg" alt=""></button>
+                    </div>
+                    <div class="all-steps">
+                        <div class="step-form active">
+                            <h2 class="form-title my-5">Select a frame width</h2>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="custom-label">
+                                    <input type="radio" id="wide" name="width" hidden value="Wide">
+                                    Wide
+                                </label>
+                                <span></span>
+                            </div>
+                            <label class="text-label mb-4" for="wide">If you have a wide or broad face</label>
+                        </div>
+                        <div class="step-form">
+                            <h2 class="form-title my-5">Select a prescription type</h2>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="custom-label">
+                                    <input type="radio" id="single-vision" name="prescription_type" hidden value="Single-vision" data-price="195">
+                                    Single-vision
+                                </label>
+                                <span class="price">$195</span>
+                            </div>
+                            <label class="text-label mb-4" for="single-vision" class="mb-4">Corrects for one field of vision (near, intermediate, or distance)</label>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="custom-label">
+                                    <input type="radio" id="progressives" name="prescription_type" hidden value="Progressives" data-price="395">
+                                    Progressives
+                                </label>
+                                <span class="price">$395</span>
+                            </div>
+                            <label class="text-label mb-4" for="progressives" class="mb-4">Corrects near, intermediate, and distance fields of
+                                vision in one lens so you don't have to switch between multiple pairs</label>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="custom-label">
+                                    <input type="radio" id="non-prescription" name="prescription_type" hidden value="Non-prescription" data-price="195">
+                                    Non-prescription
+                                </label>
+                                <span class="price">$195</span>
+                            </div>
+                            <label class="text-label mb-4" for="non-prescription" class="mb-4">Offers style and protection with no vision
+                                correction</label>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="custom-label">
+                                    <input type="radio" id="readers" name="prescription_type" hidden value="Readers" data-price="195">
+                                    Readers
+                                </label>
+                                <span class="price">$195</span>
+                            </div>
+                            <label class="text-label mb-4" for="readers" class="mb-4">Offer simple magnification for, well, reading (no
+                                prescription necessary)</label>
+                        </div>
+                        <div class="step-form removeable">
+                            <h2 class="form-title my-5">Select a type of single-vision</h2>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="custom-label ">
+                                    <input type="radio" id="standard" name="single_vision" hidden value="Standard" data-price="0">
+                                    Standard
+                                </label>
+                                <span class="price">Free</span>
+                            </div>
+                            <label class="text-label mb-4" for="standard" class="mb-4">Corrects one field of vision (near, intermediate, or distance)</label>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="custom-label">
+                                    <input type="radio" id="anti-fatigue" name="single_vision" hidden value="Anti-fatigue" data-price="100">
+                                    Anti-fatigue
+                                </label>
+                                <span class="price">+$100</span>
+                            </div>
+                            <label class="text-label mb-4" for="anti-fatigue" class="mb-4">Anti-fatigue lenses are designed to lessen eye strain caused by digital devices and other activities of focus. They feature a small boost of power at the bottom that’s seamlessly integrated into the lens.</label>
+                        </div>
+                        <div class="step-form removeable">
+                            <h2 class="form-title my-5">Select a readers strength</h2>
+                            <div class="readers-lenghts">
+                                <label class="custom-label-2">
+                                    <input type="radio" name="readers_strength" hidden value="+0.25">
+                                    +0.25
+                                </label>
+                                <label class="custom-label-2">
+                                    <input type="radio" name="readers_strength" hidden value="+1.75">
+                                    +1.75
+                                </label>
+                                <label class="custom-label-2">
+                                    <input type="radio" name="readers_strength" hidden value="+0.50">
+                                    +0.50
+                                </label>
+                                <label class="custom-label-2">
+                                    <input type="radio" name="readers_strength" hidden value="+2.00">
+                                    +2.00
+                                </label>
+                                <label class="custom-label-2">
+                                    <input type="radio" name="readers_strength" hidden value="+0.50">
+                                    +0.50
+                                </label>
+                                <label class="custom-label-2">
+                                    <input type="radio" name="readers_strength" hidden value="+2.00">
+                                    +2.00
+                                </label>
+                            </div>
+                        </div>
+                        <div class="step-form">
+                            <h2 class="form-title my-5">Select a lens type</h2>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="custom-label">
+                                    <input type="radio" id="classic" name="lense_type" hidden value="Classic" data-price="0">
+                                    Classic
+                                </label>
+                                <span class="price">Free</span>
+                            </div>
+                            <label class="text-label mb-4" for="classic" class="mb-4">Scratch-resistant, anti-reflective lenses that block 100% of UV rays</label>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="custom-label">
+                                    <input type="radio" id="blue-light-filtering" name="lense_type" hidden value="Blue-light-filtering" data-price="50">
+                                    Blue-light-filtering
+                                </label>
+                                <span class="price">+$50</span>
+                            </div>
+                            <label class="text-label mb-4" for="blue-light-filtering" class="mb-4">Scratch-resistant, anti-reflective lenses that block 100% of UV rays; they also filter more blue light than our classic lenses—and may help if screen time is affecting your sleep.</label>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="custom-label">
+                                    <input type="radio" id="light-responsive" name="lense_type" hidden value="Light responsive" data-price="100">
+                                    Light responsive
+                                </label>
+                                <span class="price">+$100</span>
+                            </div>
+                            <label class="text-label mb-4" for="light-responsive" class="mb-4">Scratch-resistant, anti-reflective lenses that block 100% of UV rays and transition from clear to a darker tint outdoors (choose from grey, brown or green). They also filter more blue light than our classic lenses.</label>
+                        </div>
+                        <div class="step-form removeable">
+                            <h2 class="form-title my-5">Select a lens color</h2>
+                            <div class="grid-section">
+                                <div></div>
+                                <div>
+                                    <img src="img/desktop_indoors-outdoors_4x.avif" class="img-fluid" alt="">
+                                </div>
+                                <label class="custom-label">
+                                    <input type="radio" id="grey" name="lense_color" hidden value="Grey">
+                                    Grey
+                                </label>
+                                <label class="text-label mb-4" for="grey" class="m-0"><img src="img/desktop_grey.avif" class="img-fluid" alt=""></label>
+                                <label class="custom-label">
+                                    <input type="radio" id="brown" name="lense_color" hidden value="Brown">
+                                    Brown
+                                </label>
+                                <label class="text-label mb-4" for="brown" class="m-0"><img src="img/desktop_brown.avif" class="img-fluid" alt=""></label>
+                                <label class="custom-label">
+                                    <input type="radio" id="green" name="lense_color" hidden value="Green">
+                                    Green
+                                </label>
+                                <label class="text-label mb-4" for="green" class="m-0"><img src="img/desktop_green.avif" class="img-fluid" alt=""></label>
+                            </div>
+                        </div>
+                        <div class="step-form">
+                            <h2 class="form-title my-5">Select a lens material</h2>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="custom-label">
+                                    <input type="radio" id="polycarbonate" name="lense_material" hidden value="Polycarbonate" data-price="0">
+                                    Polycarbonate
+                                </label>
+                                <span class="price">Free</span>
+                            </div>
+                            <label class="text-label mb-4" for="polycarbonate" class="mb-4">High-quality and impact-resistant</label>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="custom-label">
+                                    <input type="radio" id="high-index" name="lense_material" hidden value="1.67 high-index" data-price="50">
+                                    1.67 high-index
+                                </label>
+                                <span class="price">+$50</span>
+                            </div>
+                            <label class="text-label mb-4" for="high-index" class="mb-4">Thinner lenses recommended for strong prescriptions (if total power is +/-4.0 or higher)</label>
+                        </div>
+                        <div class="step-form last-step">
+                            <h2 class="form-title mt-5">Review your selections</h2>
+                            <p class="text-center mb-5">You’ll get free shipping, hassle-free returns, and our six-month, no-scratch guarantee.</p>
+                            <div class="cart-data">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-footer">
+                        <div class="subtotal-container">
+                            <span>Subtotal</span>
+                            <span class="subtotal">0</span>
+                        </div>
+                        <div class="addtocart-container">
+                            <button class="addtocart-btn">Add to Cart</button>
+                            <button class="edit-btn">Edit Selections</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
