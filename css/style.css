@@ -121,13 +121,14 @@
     margin-top: 16px;
 }
 #progress-container {
-    width: 100%;
     background-color: #f0f0f0;
+    margin-left: -3rem;
+    margin-right: -3rem;
   }
   
 #progress-bar {
-    height: 2px;
-    background-color: #4caf50;
+    height: 4px;
+    background-color: #006ea5;
     width: 0%;
 }
 @media(min-width: 768px){

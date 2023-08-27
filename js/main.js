@@ -2,6 +2,7 @@ const forms = document.querySelectorAll('.step-form');
 const radioButtons = document.querySelectorAll('input[type="radio"]');
 const backBtn = document.getElementById('backBtn');
 const progressBar = document.getElementById('progress-bar');
+const startOverBtn = document.querySelector('.edit-btn');
 
 let currentStep = 0;
 
@@ -39,7 +40,7 @@ function resetRadioButtons() {
 
 function updateProgressBar() {
     let forms = document.querySelectorAll('.step-form');
-    const progressPercentage = ((currentStep + 1) / forms.length) * 100;
+    const progressPercentage = ((currentStep ) / forms.length) * 100;
     progressBar.style.width = `${progressPercentage}%`;
   }
 
@@ -174,7 +175,7 @@ function handleRadioChange(event) {
             subtotalContainer.style.opacity = "0"
             addtocartContainer.style.display = "flex"
             addtocartContainer.style.opacity = "1"
-            document.querySelector(".addtocart-btn").innerHTML = "Add to Cart" + (parseInt(prescriptionPrice) + parseInt( singleVisionPrice?singleVisionPrice:0) + parseInt( lenseTypePrice?lenseTypePrice:0) + parseInt( lenseMaterialPrice?lenseMaterialPrice:0))
+            document.querySelector(".addtocart-btn").innerHTML = "Add to Cart $" + (parseInt(prescriptionPrice) + parseInt( singleVisionPrice?singleVisionPrice:0) + parseInt( lenseTypePrice?lenseTypePrice:0) + parseInt( lenseMaterialPrice?lenseMaterialPrice:0))
         }
         else{
             subtotalContainer.style.display = "flex"
@@ -226,5 +227,10 @@ backBtn.addEventListener('click', () => {
     }
     // document.querySelector(`.added-step-${currentStep}`)?.remove()
     currentStep--;
+    updateStep(currentStep);
+});
+
+startOverBtn.addEventListener('click', () => {
+    currentStep = 0;
     updateStep(currentStep);
 });
