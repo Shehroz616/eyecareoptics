@@ -131,6 +131,15 @@
     background-color: #006ea5;
     width: 0%;
 }
+.next-btn{
+    background: #006ea5;
+    width: 100%;
+    border-radius: 25rem;
+    padding: 13px 24px;
+    border: none;
+    color: white;
+    font-weight: 600;
+}
 @media(min-width: 768px){
     .grid-section{
         max-width: 352px;
