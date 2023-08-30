@@ -140,6 +140,11 @@
     color: white;
     font-weight: 600;
 }
+.label-outer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 @media(min-width: 768px){
     .grid-section{
         max-width: 352px;

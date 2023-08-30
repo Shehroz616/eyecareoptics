@@ -6,6 +6,7 @@ const startOverBtn = document.querySelector('.edit-btn');
 const nextButtons = document.querySelectorAll('.next-btn');
 const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
 const allRadioButtons = document.querySelectorAll('input[type="radio"]');
+const removeables = document.querySelectorAll('.removeable');
 
 allRadioButtons.forEach(radio => {
     radio.addEventListener("change", (e) => {
@@ -112,77 +113,47 @@ function handleRadioChange(event) {
     currentStep++;
 
     if (selectedValue?.value == 'Progressives') {
-        let remoeables = forms[currentStep ].querySelectorAll(".remoeable")
-        console.log( forms[currentStep ])
-        remoeables.forEach(item => {
-            item.remove()
+        let removeables = forms[currentStep ].querySelectorAll(".removeable")
+        removeables.forEach(item => {
+            item.style.display = "none"
         });
         updateStep(currentStep);
     }
-    else if (selectedValue === 'Polycarbonate' || selectedValue === '1.67 high-index') {
-        let frameWidth = document.querySelector("input[name='width']:checked").value
-        let prescriptionType = document.querySelector("input[name='prescription_type']:checked").value
-        let prescriptionPrice = document.querySelector("input[name='prescription_type']:checked").getAttribute("data-price")
-        let singleVision = document.querySelector("input[name='single_vision']:checked")?.value
-        let singleVisionPrice = document.querySelector("input[name='single_vision']:checked")?.getAttribute("data-price")
-        singleVisionPrice = singleVisionPrice == "0" ? "Free" : "$" + singleVisionPrice
-        let readersStrength = document.querySelector("input[name='readers_strength']:checked")?.value
-        let lenseType = document.querySelector("input[name='lense_type']:checked").value
-        let lenseTypePrice = document.querySelector("input[name='lense_type']:checked").getAttribute("data-price")
-        lenseTypePrice = lenseTypePrice == "0" ? "Free" : "$" + lenseTypePrice
-        let lenseColor = document.querySelector("input[name='lense_color']:checked")?.value
-        let lenseMaterial = document.querySelector("input[name='lense_material']:checked").value
-        let lenseMaterialPrice = document.querySelector("input[name='lense_material']:checked").getAttribute("data-price")
-        lenseMaterialPrice = lenseMaterialPrice == "0" ? "Free" : "$" + lenseMaterialPrice
+    if (forms[currentStep].classList.contains("last-step")) {
+        let frameType = document.querySelector("input[name='frame_type']:checked")?.value
+        let frameTypePrice = document.querySelector("input[name='frame_type']:checked")?.getAttribute("data-price")
+        let prescriptionType = document.querySelectorAll("input[name='prescription_type']:checked")
+        let prescriptionTypeValues = []
+        prescriptionType.forEach(input => {
+            prescriptionTypeValues.push(input.value);
+        });
+        let prescriptionTypeValuesString = prescriptionTypeValues.join(', ');
+        let prescriptionTypePrices = 0
+        prescriptionType.forEach(input => {
+            let price = parseInt(input.getAttribute("data-price"));
+            prescriptionTypePrices += price;
+        });
+
+        let polarized = document.querySelector("input[name='polarized']:checked")?.value
+        let polarizedPrice = document.querySelector("input[name='polarized']:checked")?.getAttribute("data-price")
+        
+        let tint = document.querySelector("input[name='tint']:checked")?.value
+        let tintPrice = document.querySelector("input[name='tint']:checked")?.getAttribute("data-price")
+
+        let gradient = document.querySelector("input[name='gradient']:checked")?.value
+        let gradientPrice = document.querySelector("input[name='gradient']:checked")?.getAttribute("data-price")
+
+
 
 
 
         let cardData = `
-                    <div class="cart-row">
-                        <div>
-                            <strong>Frame width</strong> <br>
-                            <span>${frameWidth}</span>
-                        </div>
-                    </div>
-                    <div class="cart-row">
-                        <div>
-                            <strong>Prescription</strong> <br>
-                            <span>${prescriptionType} ${readersStrength ? '(' + readersStrength + ')' : ''}</span>
-                        </div>
-                        <div>
-                            $${prescriptionPrice}
-                        </div>
-                    </div>
-                    ${singleVision ? '<div class="cart-row"> <div><strong>Single vision options</strong><br><span>' + singleVision + '</span></div><div>' + singleVisionPrice + '</div></div>' : ''}
-                    <div class="cart-row">
-                        <div>
-                            <strong>Lens type</strong> <br>
-                            <span>${lenseType} ${lenseColor ? '(' + lenseColor + ')' : ''}</span>
-                        </div>
-                        <div>
-                            ${lenseTypePrice}
-                        </div>
-                    </div>
-                    <div class="cart-row">
-                        <div>
-                            <strong>Lens material</strong> <br>
-                            <span>${lenseMaterial}</span>
-                        </div>
-                        <div>
-                            ${lenseMaterialPrice}
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="cart-row">
-                        <div>
-                            <strong>Subtotal</strong>
-                        </div>
-                        <div class="subtotal-2">
-                            ${lenseMaterialPrice}
-                        </div>
-                    </div>
+                ${frameType?'<div class="cart-row"><div><strong>Frame Type</strong> <br> <span>'+frameType+'</span></div><div> $'+frameTypePrice+'</div></div>':''}
+                ${prescriptionTypeValuesString.length>=1?'<div class="cart-row"><div><strong>Prescription</strong> <br> <span>'+prescriptionTypeValuesString+'</span></div><div> $'+prescriptionTypePrices+'</div></div>':''}
+                ${polarized ? '<div class="cart-row"> <div><strong>Polarized </strong><br><span>' + polarized + '</span></div><div> $' + polarizedPrice + '</div></div>' : ''}
+                ${tint ? '<div class="cart-row"> <div><strong>Tint </strong><br><span>' + tint + '</span></div><div> $' + tintPrice + '</div></div>' : ''}
+                ${gradient ? '<div class="cart-row"> <div><strong>Gradient </strong><br><span>' + gradient + '</span></div><div> $' + gradientPrice + '</div></div>' : ''}
         `
-        console.log(frameWidth)
         document.querySelector(".cart-data").innerHTML = cardData
         updateStep(currentStep)
     }
@@ -195,21 +166,27 @@ function handleRadioChange(event) {
     if (currentStep >= 2) {
         const parent = document.querySelector(".all-steps")
 
-        let prescriptionPrice = document.querySelector("input[name='prescription_type']:checked")?.getAttribute("data-price")
-        let singleVisionPrice = document.querySelector("input[name='single_vision']:checked")?.getAttribute("data-price")
-        let lenseTypePrice = document.querySelector("input[name='lense_type']:checked")?.getAttribute("data-price")
-        let lenseMaterialPrice = document.querySelector("input[name='lense_material']:checked")?.getAttribute("data-price")
+        let frameTypePrice = document.querySelector("input[name='frame_type']:checked")?.getAttribute("data-price")
+        let polarizedPrice = document.querySelector("input[name='polarized']:checked")?.getAttribute("data-price")
+        let tintPrice = document.querySelector("input[name='tint']:checked")?.getAttribute("data-price")
+        let gradientPrice = document.querySelector("input[name='gradient']:checked")?.getAttribute("data-price")
+        let prescriptionType = document.querySelectorAll("input[name='prescription_type']:checked")
+        let prescriptionTypePrices = 0
+        prescriptionType.forEach(input => {
+            let price = parseInt(input.getAttribute("data-price"));
+            prescriptionTypePrices += price;
+        });
         subtotalContainer.style.display = "flex"
         subtotalContainer.style.opacity = "1"
-        document.querySelector(".subtotal").innerHTML = "$" + (parseInt(prescriptionPrice) + parseInt(singleVisionPrice ? singleVisionPrice : 0) + parseInt(lenseTypePrice ? lenseTypePrice : 0) + parseInt(lenseMaterialPrice ? lenseMaterialPrice : 0))
-        document.querySelector(".subtotal-2").innerHTML = "$" + (parseInt(prescriptionPrice) + parseInt(singleVisionPrice ? singleVisionPrice : 0) + parseInt(lenseTypePrice ? lenseTypePrice : 0) + parseInt(lenseMaterialPrice ? lenseMaterialPrice : 0))
-
-        if (parent.querySelector(`.step-form:nth-child(${currentStep + 1})`).classList.contains("last-step")) {
+        console.log(parent.querySelector(`.step-form:nth-child(${currentStep + 1})`))
+        document.querySelector(".subtotal").innerHTML = "$" + (parseInt(frameTypePrice?frameTypePrice:0) + parseInt(prescriptionTypePrices) + parseInt(polarizedPrice ? polarizedPrice : 0) + parseInt(tintPrice ? tintPrice : 0) + parseInt(gradientPrice ? gradientPrice : 0))
+        if (parent.querySelector(`.step-form:nth-child(${currentStep + 1 })`).classList.contains("last-step")) {
             subtotalContainer.style.display = "none"
             subtotalContainer.style.opacity = "0"
             addtocartContainer.style.display = "flex"
             addtocartContainer.style.opacity = "1"
-            document.querySelector(".addtocart-btn").innerHTML = "Add to Cart $" + (parseInt(prescriptionPrice) + parseInt(singleVisionPrice ? singleVisionPrice : 0) + parseInt(lenseTypePrice ? lenseTypePrice : 0) + parseInt(lenseMaterialPrice ? lenseMaterialPrice : 0))
+            document.querySelector(".addtocart-btn").innerHTML = "Add to Cart $" + (parseInt(frameTypePrice?frameTypePrice:0) + parseInt(prescriptionTypePrices) + parseInt(polarizedPrice ? polarizedPrice : 0) + parseInt(tintPrice ? tintPrice : 0) + parseInt(gradientPrice ? gradientPrice : 0))
+            document.querySelector(".subtotal-2").innerHTML = "$" + (parseInt(frameTypePrice?frameTypePrice:0) + parseInt(prescriptionTypePrices) + parseInt(polarizedPrice ? polarizedPrice : 0) + parseInt(tintPrice ? tintPrice : 0) + parseInt(gradientPrice ? gradientPrice : 0))
         }
         else {
             subtotalContainer.style.display = "flex"
@@ -236,7 +213,11 @@ backBtn.addEventListener('click', () => {
     const parent = document.querySelector(".all-steps")
     let subtotalContainer = document.querySelector(".subtotal-container")
     let addtocartContainer = document.querySelector(".addtocart-container")
-    
+    if (currentStep <= 1) {
+        removeables.forEach(item => {
+            item.style.display = ""
+        });
+    }
     if (currentStep <= 2) {
         subtotalContainer.style.opacity = "0"
         subtotalContainer.style.display = "none"
@@ -255,6 +236,12 @@ backBtn.addEventListener('click', () => {
 });
 
 startOverBtn.addEventListener('click', () => {
+    let subtotalContainer = document.querySelector(".subtotal-container")
+    let addtocartContainer = document.querySelector(".addtocart-container")
+    subtotalContainer.style.opacity = "0"
+    subtotalContainer.style.display = "none"
+    addtocartContainer.style.display = "none"
+    addtocartContainer.style.opacity = "0"
     currentStep = 0;
     updateStep(currentStep);
 });
